@@ -1,0 +1,318 @@
+.allerta-stencil-regular {
+    font-family: "Allerta Stencil", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}  
+
+body
+{
+    background-color: black;
+}
+
+body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #E7B411;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.banner img
+{
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+.nysLogoFondo
+{
+    position: absolute;
+    top: 0;
+    width: 30%;
+    height: 57.5%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.contenedorNysLogo
+{
+    position: absolute;
+    top: 0;
+    height: 50%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.nysLogo
+{
+    height: 80%;
+    width: 80%;
+    text-align: center;
+    color: white;
+}
+
+.logo img
+{
+    width: 60%;
+    opacity: 1;
+}
+
+.nys h1
+{
+    font-size: 2vw;
+    font-weight: bolder;
+}
+
+.nys p
+{
+    font-size: 1.5vw;
+    font-weight: lighter;
+}
+
+.redesSociales
+{
+    position: absolute;
+    top: 2%;
+    width: 10%;
+    display: flex;
+    right: 3%;
+    justify-content: right;
+}
+
+.redesSociales a
+{
+    margin-right: 5%
+}
+
+nav ul
+{
+    display: flex;
+    height: 100%;
+    margin: 0%;
+    justify-content: center;
+}
+
+nav .barra1 ul
+{
+    justify-content: left;
+}
+
+nav li, nav a
+{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    width: 13%;
+    text-align: center;
+}
+
+nav .barra1
+{
+    background-color: #AA850D;
+}
+
+nav .barra2
+{
+    background-color: #E7B411;
+    text-align: center;
+}
+
+nav .barra1 a, nav .barra1 li
+{
+    padding: 0%;
+    font-size: 1vw;
+}
+
+nav .barra2 a, nav .barra2 li
+{
+    padding: 1%;
+    font-size: 2vw;
+}
+
+#nombreCine
+{
+    font-weight: bolder;
+}
+
+#iniciarSesion
+{
+    position: absolute;
+    right: 10%;
+}
+
+#registrarse
+{
+    position: absolute;
+    right: 0;
+}
+
+.divBodyMio
+{
+    background-color: black;
+    z-index: 9;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0.6;
+}
+
+.carritoDiv
+{
+    border-color: #aaaaaa;
+    border-width: 2px;
+    border-style: solid;
+    background-color: black;
+    z-index: 10;
+    position:fixed;
+    width: 800px;
+    height: 470px;
+    top: 20%;
+    left: 23%;
+    padding: 2%;
+}
+
+#notiCarritoDiv
+{
+    width: 100%;
+}
+
+#notiCarrito
+{
+    position: absolute;
+    top: -10%;
+    left: 24%;
+    width: 25px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    border-radius: 100px;
+}
+
+#liInicio
+{
+    display: flex;
+    text-align: center;
+}
+
+#imgInicio
+{
+    position: absolute;
+    width: 7%;
+    margin-top: -2.5%;
+    margin-left: 1%;
+}
+
+#infoPreventa1
+{
+    visibility: hidden;
+}
+
+#cardPreventa1
+{
+    transform: rotate(-30deg);
+}
+
+#cardPreventa2
+{
+    z-index: 1;
+    position: absolute;
+}
+
+#cardPreventa3
+{
+    transform: rotate(30deg);
+}
+
+#cardPreventa1:hover #infoPreventa1
+{
+    visibility: visible;
+}
+
+#infoPreventa2
+{
+    visibility: hidden;
+}
+
+#cardPreventa2:hover #infoPreventa2
+{
+    visibility: visible;
+}
+
+#infoPreventa3
+{
+    visibility: hidden;
+}
+
+#cardPreventa3:hover #infoPreventa3
+{
+    visibility: visible;
+}
+
+#cardPreventa1:hover
+{
+    animation-duration: 1s;
+    animation-name: slidein1, slidein2;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#cardPreventa2:hover
+{
+    animation-duration: 1s;
+    animation-name: slidein1-2;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#cardPreventa3:hover
+{
+    animation-duration: 1s;
+    animation-name: slidein1-3, slidein2-3;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slidein1 {
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes slidein2 {
+    to {
+      transform: translateX(-100px);
+    }
+}
+
+@keyframes slidein1-2 {
+    to {
+      transform: translateY(-50px);
+    }
+  }
+
+@keyframes slidein1-3 {
+    to {
+      transform: translateY(-200px);
+    }
+  }
+  
+  @keyframes slidein2-3 {
+      to {
+        transform: translateX(100px);
+      }
+  }
