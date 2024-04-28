@@ -22,12 +22,17 @@ class TiendaController extends Controller
 
     public function store(Request $request)
     {
+        //Busca el precio del producto seleccionado para hacer un total al mutliplicar el precio * cantidad
+        $precioProd = Producto::all()
+        ->where('id_producto', $request->aguasId);
 
+        //Crea un objeto donde se guardará
         $detalle = new DetalleVenta();
-        $detalle->id_producto = $request->aguas;
+        $detalle->id_producto = $request->aguasId;
         $detalle->id_venta = 0;
         $detalle->cantidad = $request->cantidadAguas;
         $detalle->tamanio = 'Null';
+        $detalle->total = ($precioProd->first()->precio * $detalle->cantidad);
         $detalle->save();
 
         return redirect()->action([TiendaController::class, 'index']);

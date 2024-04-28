@@ -38,7 +38,7 @@
                         }
                     </script>
 
-                    <form action="{{ route('ejemplo') }}" method="post">
+                    <form action="{{ route('carritoCompras') }}" method="post">
                         {{ csrf_field() }}
                         
                         <div class="w-100">

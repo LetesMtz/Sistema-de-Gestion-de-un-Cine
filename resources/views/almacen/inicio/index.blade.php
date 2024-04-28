@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
                     <img src="./img/Banner.png" class="d-block w-100" alt="...">
 
