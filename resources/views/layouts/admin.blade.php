@@ -152,7 +152,7 @@
                                     <td>'. $item->tamanio .'</td>
                                     <td>'. $item->precio .'</td>
                                     <td>'. $item->total .'</td>
-                                    <td><a href="#">Eliminar</a></td>
+                                    <td><a href="';?>{{route('eliminarItemCarrito', $item->id_det_vent_temp)}}<?php echo '">Eliminar</a></td>
                                 </tr>
                             ';
 

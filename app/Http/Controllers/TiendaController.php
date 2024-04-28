@@ -37,4 +37,12 @@ class TiendaController extends Controller
 
         return redirect()->action([TiendaController::class, 'index']);
     }
+
+    public function destroy(int $id)
+    {
+        //Busca coincidencia con id_det_vent_temp. Si encuentra el registro lo elimina de la BD.
+        DetalleVenta::where('id_det_vent_temp', $id)->delete();
+        
+        return redirect()->action([TiendaController::class, 'index']);
+    }
 }

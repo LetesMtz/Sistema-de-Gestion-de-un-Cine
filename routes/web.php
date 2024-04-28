@@ -29,5 +29,7 @@ Route::get('/tienda',[TiendaController::class, 'index'])->name('tienda');
 
 Route::post('/tienda/store', [TiendaController::class, 'store'])->name('carritoCompras');
 
+Route::get('/tienda/delete/{id}', [TiendaController::class, 'destroy'])->name('eliminarItemCarrito');
+
 //Esta ruta no se encarga de nada aún
 Route::get('/peliculas', []);
