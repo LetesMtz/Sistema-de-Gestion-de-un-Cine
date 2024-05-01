@@ -43,34 +43,6 @@
 
     <!-- INICIO DEL NAVBAR -->
     <nav style="position: sticky; top: 0; width: 100%; z-index: 3;">
-        <script>
-            function carritoCompras(){
-                var div1 = document.getElementById('div1');
-                var div2 = document.getElementById('div2');
-
-                div1.style.visibility = 'visible';
-                div2.style.visibility = 'visible';
-            }
-
-            function ocultarCarrito(){
-                var div1 = document.getElementById('div1');
-                var div2 = document.getElementById('div2');
-
-                div1.style.visibility = 'hidden';
-                div2.style.visibility = 'hidden';
-            }
-
-            function mostrarNoti(){
-                var noti = document.getElementById("notiCarrito");
-                var valorNoti = document.querySelector("#valorNoti").value;
-
-                if (valorNoti == 0) {
-                    
-                }else{
-                    noti.style.visibility = 'visible';
-                }
-            }
-        </script>
 
         <div class="barra1">
             <ul>
@@ -158,9 +130,6 @@
 
                         ?>    
                         @endforeach
-
-                        
-                      
                     </tbody>
                   </table>
             </div>
@@ -209,5 +178,6 @@
         </div>
     </footer>
     <!-- FIN DEL FOOTER -->
+    <script src="{{ asset('js/script.js') }}"></script>
   </body>
 </html>

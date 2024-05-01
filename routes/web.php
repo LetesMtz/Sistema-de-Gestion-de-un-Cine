@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\DescripcionCarteleraController;
+use App\Http\Controllers\PagarController;
 use App\Models\Cartelera;
 use Illuminate\Routing\ViewController;
 
@@ -20,6 +21,11 @@ Route::get('/cartelera', [CarteleraController::class, 'index'])->name('cartelera
 
 //Esta ruta se encarga de mostrar la vista de la cartelera seleccionada en la cartelera completa (la ruta anterior)
 Route::get('/descripcion/{id}', [DescripcionCarteleraController::class, 'index'])->name('descripcionCartelera');
+
+/* Acciones del controlador pagar */
+Route::get('/pagar/{id}', [PagarController::class, 'index'])->name('aPagar');
+
+Route::post('/pagar/{id}/agregarboleto', [PagarController::class, 'AgregarBoleto'])->name('agregarBoleto');
 
 /* Acciones del controlador TiendaController */
 

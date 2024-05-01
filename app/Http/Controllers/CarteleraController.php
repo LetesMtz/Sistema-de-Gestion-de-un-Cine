@@ -16,6 +16,7 @@ class CarteleraController extends Controller
         ->where('cartelera.id_tipo_cartelera', 1)
         ->where('cartelera.id_estado', 1)
         ->orderBy('pelicula.titulo')
+        ->distinct()
         ->get();
 
         $carteleraPreventa = Cartelera::select('cartelera.id_pelicula', 'pelicula.titulo', 'pelicula.sinopsis', 'clasificacion.nombre as clasificacion', 'clasificacion.descripcion',

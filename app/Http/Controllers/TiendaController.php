@@ -31,7 +31,7 @@ class TiendaController extends Controller
         $detalle->id_producto = $request->aguasId;
         $detalle->id_venta = 0;
         $detalle->cantidad = $request->cantidadAguas;
-        $detalle->tamanio = 'Null';
+        $detalle->tamanio = $precioProd->first()->tamanio;
         $detalle->total = ($precioProd->first()->precio * $detalle->cantidad);
         $detalle->save();
 

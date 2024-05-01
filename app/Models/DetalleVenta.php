@@ -19,6 +19,7 @@ class DetalleVenta extends Model
         'id_producto',
         'id_venta',
         'cantidad',
-        'tamanio'
+        'tamanio',
+        'id_asiento'
     ];
 }

@@ -4,19 +4,17 @@
 {{-- INICIO DEL APARTADO INFORMACION IMPORTANTE --}}
 <?php
     $peli = [];
-?>
 
-@foreach ($peliculaDetalle as $item)
-<?php
-    $peli[0] = $item->titulo;
-    $peli[1] = $item->portada;
-    $peli[2] = $item->clasificacion;
-    $peli[3] = $item->duracion;
-    $peli[4] = $item->sala;
-    $peli[5] = $item->trailer;
-    $peli[6] = $item->sinopsis;
+    $peli[0] = $peliculaDetalle->first()->titulo;
+    $peli[1] = $peliculaDetalle->first()->portada;
+    $peli[2] = $peliculaDetalle->first()->clasificacion;
+    $peli[3] = $peliculaDetalle->first()->duracion;
+    $peli[4] = $peliculaDetalle->first()->sala;
+    $peli[5] = $peliculaDetalle->first()->trailer;
+    $peli[6] = $peliculaDetalle->first()->sinopsis;
+    $peli[7] = $peliculaDetalle->first()->id_pelicula;
 ?>   
-@endforeach
+
 
     <div class="container text-light mt-5">
         <div>
@@ -55,22 +53,36 @@
                     <h4>Horarios</h4>
                     <hr style="color: white;">
 
-                    <div class="p-3 overflow-auto" style="background-color: #393939; height: 379px;">
-                        <div>
-                            <h5>Lunes</h5>
-                            <hr>
+                    <div class="ps-3 pe-3 pt-2 pb-3 overflow-auto" style="background-color: #393939; height: 379px;">
+                        @foreach ($peliculaDetalle as $horario)
+                        <form action="{{ route('aPagar', $peli[7]) }}" method="post">
+                            {{ csrf_field() }}
 
-                            <div >
-                                <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
-                                <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
-                                <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
-                                <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
-                                <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
-                                <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
+                            <div class="mt-3">
+                                <h5><?= $horario->dia ?></h5>
+                                <hr>
+
+                                <div>
+                                    <?php
+
+                                        $horas = explode(",", $horario->hora_inicio);
+                                        
+                                        for ($i=0; $i < count($horas); $i++) {
+                                            echo '
+                                                <input type="hidden" id="hora_inicio" name="hora_inicio" value="<?= $horas[$i] ?>">
+                                                <input type="submit" class="btn mb-1 ms-1" value="'. $horas[$i] .'" style="background-color: #E7B411; width: 20%; font-weight: bold;">
+                                            ';
+                                        }
+                                    ?>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
-                        <div class="mt-3">
+                        @endforeach
+                        
+                        
+
+                        {{-- <div class="mt-3">
                             <h5>Martes</h5>
                             <hr>
 
@@ -96,7 +108,7 @@
                                 <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
                                 <a href="#" class="btn" style="background-color: #E7B411; width: 20%; font-weight: bold;">00:00</a>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
