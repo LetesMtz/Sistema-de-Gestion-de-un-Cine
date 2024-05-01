@@ -12,7 +12,7 @@
         //{{route('descripcionCartelera', 'id')}} -> Primero va el nombre de la ruta y despues el parametro a enviar a la ruta
         echo '
                 <div class="card me-5 w-50" style="background-color: #E8E8E8;">
-                    <a href="';?>{{route('descripcionCartelera', $item->id_pelicula)}}<?php echo '"><img src="'. $item->portada .'" class="card-img-top bg-light" alt="...">
+                    <a href="';?>{{route('descripcionCartelera', $item->id_pelicula)}}<?php echo '" style="text-decoration: none; color: black;"><img src="'. $item->portada .'" class="card-img-top bg-light" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">'. $item->titulo .'</h5>
                         
@@ -43,7 +43,7 @@
         <?php
             echo '
                 <div class="card me-5 w-50" style="background-color: #E8E8E8;">
-                    <a href="';?>{{route('descripcionCartelera', $item->id_pelicula)}}<?php echo '"><img src="'. $item->portada .'" class="card-img-top bg-light" alt="...">
+                    <a href="';?>{{route('descripcionCartelera', $item->id_pelicula)}}<?php echo '" style="text-decoration: none; color: black;"><img src="'. $item->portada .'" class="card-img-top bg-light" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">'. $item->titulo .'</h5>
                         

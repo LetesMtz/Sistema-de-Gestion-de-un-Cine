@@ -29,6 +29,7 @@ class HomeController extends Controller
         // })
         ->where('cartelera.id_tipo_cartelera', 1)
         ->where('cartelera.id_estado', 1)
+        ->distinct()
         ->orderBy('pelicula.titulo')
         ->take(3)
         ->get();

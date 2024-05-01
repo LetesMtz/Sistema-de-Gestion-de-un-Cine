@@ -23,9 +23,13 @@ Route::get('/cartelera', [CarteleraController::class, 'index'])->name('cartelera
 Route::get('/descripcion/{id}', [DescripcionCarteleraController::class, 'index'])->name('descripcionCartelera');
 
 /* Acciones del controlador pagar */
-Route::get('/pagar/{id}', [PagarController::class, 'index'])->name('aPagar');
+Route::get('/pagar/{id}', [PagarController::class, 'index'])->name('aPagarGet');
+
+Route::post('/pagar/{id}', [PagarController::class, 'index'])->name('aPagar');
 
 Route::post('/pagar/{id}/agregarboleto', [PagarController::class, 'AgregarBoleto'])->name('agregarBoleto');
+
+Route::post('/pagado/agregarventa', [PagarController::class, 'AgregarVenta'])->name('agregarVenta');
 
 /* Acciones del controlador TiendaController */
 

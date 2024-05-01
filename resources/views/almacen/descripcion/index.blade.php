@@ -67,10 +67,11 @@
 
                                         $horas = explode(",", $horario->hora_inicio);
                                         
-                                        for ($i=0; $i < count($horas); $i++) {
+                                        for ($i=0; $i < count($horas); $i++) 
+                                        {
                                             echo '
-                                                <input type="hidden" id="hora_inicio" name="hora_inicio" value="<?= $horas[$i] ?>">
-                                                <input type="submit" class="btn mb-1 ms-1" value="'. $horas[$i] .'" style="background-color: #E7B411; width: 20%; font-weight: bold;">
+                                                <input type="hidden" id="dia" name="dia" value="'. $horario->dia .'">
+                                                <input type="submit" id="hora_inicio" name="hora_inicio" class="btn mb-1 ms-1" value="'. $horas[$i] .'" style="background-color: #E7B411; width: 20%; font-weight: bold;">
                                             ';
                                         }
                                     ?>

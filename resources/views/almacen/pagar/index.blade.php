@@ -18,7 +18,13 @@
                     <select class="form-select w-100" id="id_boleto" name="id_boleto">
                         <option selected>Seleccione...</option>
                         @foreach ($boletos as $item)
-                            <option value="<?= $item->id_producto ?>"><?= $item->nombre ?></option>
+                            @if ($pelicula->first()->id_clasificacion == 1)
+                                <option value="<?= $item->id_producto ?>"><?= $item->nombre ?></option>
+                            @endif
+
+                            @if ($pelicula->first()->id_clasificacion > 1 && $item->nombre_producto <> 'Niños')
+                                <option value="<?= $item->id_producto ?>"><?= $item->nombre ?></option>
+                            @endif
                         @endforeach
                     </select>
 
@@ -46,76 +52,92 @@
         </div>
     </div>
 
-    <div class="divPagar w-50 " style="display: none;">
-        <div class="d-flex ">
-            <div class="w-100 me-5 text-light">
-                <h2 class="text-light">Información necesaria:</h2>
+    <form action="{{ route('agregarVenta') }}" method="post">
+        {{ csrf_field() }}
+
+        <input type="hidden" name="id_pelicula" id="id_pelicula" value="<?= $id_pelicula ?>">
         
-                <div>
-                    <span>Nombre completo:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="mt-3 ">
-                    <span>Correo electrónico:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="mt-3 ">
-                    <span>Sala:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="mt-3 ">
-                    <span>Hora:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="mt-3 ">
-                    <span>Fecha:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="mt-3 ">
-                    <span>Tarjeta:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="mt-3 ">
-                    <span>CCV:</span>
-                    <br>
-                    <input type="text" class="w-100 form-control ">
-                </div>
-        
-                <div class="d-flex justify-content-between">
-                    <div class="mt-3 me-5 w-50">
-                        <span>Mes de vencimiento:</span>
-                        <br>
-                        <input type="text" class="w-100 form-control ">
+        <div class="divPagar w-100" style="display: none;">
+            <div class="d-flex ">
+                <div class="w-100 me-5 text-light">
+                    <h2 class="text-light">Información necesaria:</h2>
+                    
+                    <div class="d-flex justify-content-between">
+                    
+                        <div class="mt-3 me-5 w-50">
+                            <span>Nombre:</span>
+                            <br>
+                            <input type="text" class="w-100 form-control" id="nombre_cliente" name="nombre_cliente">
+                        </div>
+    
+                        <div class="mt-3 w-50">
+                            <span>Apellido:</span>
+                            <br>
+                            <input type="text" class="w-100 form-control" id="apellido_cliente" name="apellido_cliente">
+                        </div>
+                        
                     </div>
-        
-                    <div class="mt-3 w-50">
-                        <span>Año de vencimiento:</span>
+            
+                    <div class="mt-3 ">
+                        <span>Correo electrónico:</span>
                         <br>
-                        <input type="text" class="w-100 form-control ">
+                        <input type="text" class="w-100 form-control" id="email" name="email">
+                    </div>
+            
+                    <div class="mt-3 ">
+                        <span>Sala:</span>
+                        <br>
+                        <input type="text" class="w-100 form-control" id="id_sala" name="id_sala">
+                    </div>
+            
+                    <div class="mt-3 ">
+                        <span>Hora:</span>
+                        <br>
+                        <input type="text" value="<?= $hora_inicio ?>" class="w-100 form-control " id="hora_inicio" name="hora_inicio" readonly>
+                    </div>
+            
+                    <div class="mt-3 ">
+                        <span>Día:</span>
+                        <br>
+                        <input type="text" value="<?= $dia ?>" class="w-100 form-control " id="dia" name="dia" readonly>
+                    </div>
+            
+                    <div class="mt-3 ">
+                        <span>Tarjeta:</span>
+                        <br>
+                        <input type="text" class="w-100 form-control " id="num_tarjeta" name="num_tarjeta">
+                    </div>
+            
+                    <div class="mt-3 ">
+                        <span>CCV:</span>
+                        <br>
+                        <input type="text" class="w-100 form-control " id="ccv" name="ccv">
+                    </div>
+            
+                    <div class="d-flex justify-content-between">
+                        <div class="mt-3 me-5 w-50">
+                            <span>Mes de vencimiento:</span>
+                            <br>
+                            <input type="month" class="w-100 form-control" id="mes_vencimiento" name="mes_vencimiento">
+                        </div>
+            
+                        <div class="mt-3 w-50">
+                            <span>Año de vencimiento:</span>
+                            <br>
+                            <input type="text" class="w-100 form-control" id="anio_vencimiento" name="anio_vencimiento">
+                        </div>
                     </div>
                 </div>
+            
+                
+                
             </div>
-        
             
-            
+            <div class="container d-flex justify-content-center mt-4 mb-5">
+                <input type="submit" value="Realizar compra" class="form-control" style="width: 13vw;">
+            </div>
         </div>
-        
-        <div class="container d-flex justify-content-center mt-4 mb-5">
-            <input type="submit" value="Realizar compra" class="form-control" style="width: 15%;">
-        </div>
-    </div>
+    </form>
 
     <div class="w-50 mb-5 ms-5 text-light">
         <h2>Información de la compra</h2>

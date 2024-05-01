@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetalleVenta;
+use App\Models\DetalleVenta_Temp;
 use App\Models\Producto;
 use App\Models\Tamanio;
 use Illuminate\Http\Request;
@@ -41,8 +42,8 @@ class TiendaController extends Controller
     public function destroy(int $id)
     {
         //Busca coincidencia con id_det_vent_temp. Si encuentra el registro lo elimina de la BD.
-        DetalleVenta::where('id_det_vent_temp', $id)->delete();
+        DetalleVenta_Temp::where('id_det_vent_temp', $id)->delete();
         
-        return redirect()->action([TiendaController::class, 'index']);
+        return back();
     }
 }

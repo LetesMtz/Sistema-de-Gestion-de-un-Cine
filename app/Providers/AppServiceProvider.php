@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\DetalleVenta;
+use App\Models\DetalleVenta_Temp;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $det_vent_temp = DetalleVenta::select('detalle_venta_temp.id_det_vent_temp', 'producto.nombre', 'detalle_venta_temp.cantidad', 'detalle_venta_temp.tamanio', 'producto.precio',
+        $det_vent_temp = DetalleVenta_Temp::select('detalle_venta_temp.id_det_vent_temp', 'producto.nombre', 'detalle_venta_temp.cantidad', 'detalle_venta_temp.tamanio', 'producto.precio',
         'detalle_venta_temp.total')
         ->join('producto', 'detalle_venta_temp.id_producto', '=', 'producto.id_producto')
         ->get();
