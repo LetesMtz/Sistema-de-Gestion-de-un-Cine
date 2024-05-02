@@ -110,26 +110,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
                         <?php
                             
                         ?>
-
+                    
                         @foreach ($detalles_temporales as $item)
+                        <form action="{{route('editarItemCarrito', $item->id_det_vent_temp)}}" method="get">
+                            {{ csrf_field() }}
                         <?php
                             
                             echo '
                                 <tr class="table-dark">
                                     <td>'. $item->nombre .'</td>
-                                    <td>'. $item->cantidad .'</td>
+                                    <td><input type="text" value="'. $item->cantidad .'" id="cantidad" name="cantidad"></td>
                                     <td>'. $item->tamanio .'</td>
                                     <td>'. $item->precio .'</td>
                                     <td>'. $item->total .'</td>
-                                    <td><a href="';?>{{route('eliminarItemCarrito', $item->id_det_vent_temp)}}<?php echo '">Eliminar</a></td>
+                                    <td>
+                                        <input type="submit" value="Editar">
+                                        /
+                                        <a href="';?>{{route('eliminarItemCarrito', $item->id_det_vent_temp)}}<?php echo '">Eliminar</a>
+                                    </td>
                                 </tr>
                             ';
 
                         ?>    
+                        </form>
                         @endforeach
+                    
                     </tbody>
                   </table>
             </div>

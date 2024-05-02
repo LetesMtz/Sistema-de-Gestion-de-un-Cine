@@ -12,7 +12,7 @@ class Producto extends Model
     #¿Qué tabla será llamada?
     protected $table='producto';
 
-    protected $primarykey='id_producto';
+    protected $primaryKey='id_producto';
 
     public $timestamps=false;
 

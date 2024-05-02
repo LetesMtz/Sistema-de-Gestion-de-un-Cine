@@ -11,7 +11,7 @@ class Asiento extends Model
 
     protected $table='asiento';
 
-    protected $primarykey='id_asiento';
+    protected $primaryKey='id_asiento';
 
     public $timestamps=false;
 

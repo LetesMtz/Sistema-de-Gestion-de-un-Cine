@@ -91,6 +91,8 @@ class PagarController extends Controller
         $asiento = Asiento::all()
         ->where('id_asiento', $request->id_asiento);
 
+        $totalVenta = 0;
+
         foreach ($detalleVentaTemp as $item)
         {
             $detalleVentaNuevo = new DetalleVenta();
@@ -101,7 +103,13 @@ class PagarController extends Controller
             $detalleVentaNuevo->total = $detalleVentaTemp->first()->total;
             $detalleVentaNuevo->id_asiento = $detalleVentaTemp->first()->id_asiento;
             $detalleVentaNuevo->save();
+
+            $totalVenta = $detalleVentaTemp->first()->total;
         }
+
+        $ventaTotal = Venta::findOrFail($ventaBuscar->first()->id_venta);
+        $ventaTotal->total = $totalVenta;
+        $ventaTotal->save();
 
         DetalleVenta_Temp::query()->delete();
 

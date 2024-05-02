@@ -11,7 +11,7 @@ class Tamanio extends Model
 
     protected $table='tamanio';
 
-    protected $primarykey='id_tamanio';
+    protected $primaryKey='id_tamanio';
 
     public $timestamps=false;
 

@@ -12,7 +12,7 @@ class Pelicula extends Model
     #¿Qué tabla será llamada?
     protected $table='pelicula';
 
-    protected $primarykey='id_pelicula';
+    protected $primaryKey='id_pelicula';
 
     public $timestamps=false;
 

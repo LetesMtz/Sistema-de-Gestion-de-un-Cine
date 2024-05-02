@@ -11,7 +11,7 @@ class Estado extends Model
 
     protected $table='estado';
 
-    protected $primarykey='id_estado';
+    protected $primaryKey='id_estado';
 
     public $timestamps=false;
 

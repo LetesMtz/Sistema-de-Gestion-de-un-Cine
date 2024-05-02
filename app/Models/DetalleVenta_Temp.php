@@ -11,7 +11,7 @@ class DetalleVenta_Temp extends Model
 
     protected $table='detalle_venta_temp';
 
-    protected $primarykey='id_det_vent_temp';
+    protected $primaryKey='id_det_vent_temp';
 
     public $timestamps=false;
 

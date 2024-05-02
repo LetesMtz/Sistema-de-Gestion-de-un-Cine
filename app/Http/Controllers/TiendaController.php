@@ -28,7 +28,7 @@ class TiendaController extends Controller
         ->where('id_producto', $request->aguasId);
 
         //Crea un objeto donde se guardará
-        $detalle = new DetalleVenta();
+        $detalle = new DetalleVenta_Temp();
         $detalle->id_producto = $request->aguasId;
         $detalle->id_venta = 0;
         $detalle->cantidad = $request->cantidadAguas;
@@ -37,6 +37,21 @@ class TiendaController extends Controller
         $detalle->save();
 
         return redirect()->action([TiendaController::class, 'index']);
+    }
+
+    public function update(int $id, Request $request)
+    {
+        $detVentTempBuscar = DetalleVenta_Temp::select('producto.precio')
+        ->join('producto', 'detalle_venta_temp.id_producto', '=', 'producto.id_producto')
+        ->where('id_det_vent_temp', $id)
+        ->get();
+
+        $detVentTemp = DetalleVenta_Temp::findOrFail($id);
+        $detVentTemp->cantidad = $request->cantidad;
+        $detVentTemp->total = $request->cantidad * $detVentTempBuscar->first()->precio;
+        $detVentTemp->save();
+
+        return back();
     }
 
     public function destroy(int $id)

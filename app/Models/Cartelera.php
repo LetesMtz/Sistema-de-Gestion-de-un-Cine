@@ -11,7 +11,7 @@ class Cartelera extends Model
 
     protected $table='cartelera';
 
-    protected $primarykey='id_cartelera';
+    protected $primaryKey='id_cartelera';
 
     public $timestamps=false;
 
