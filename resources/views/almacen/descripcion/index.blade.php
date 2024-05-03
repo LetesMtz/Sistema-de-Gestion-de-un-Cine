@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="ms-5">
-                        <a href="<?= $peli[5] ?>" class="btn" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
+                        <a href="<?= $peli[5] ?>" class="btn" target="blank" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
                     </div>
                 </div>
 
@@ -116,7 +116,7 @@
             </div>
         </div>
         
-        <div class="mt-5">
+        <div class="mt-5 mb-5 ">
             <div>
                 <h4>Sinopsis</h4>
                 <hr>
@@ -126,7 +126,7 @@
                 <p><?= $peli[6] ?></p>
             </div>
 
-            <div>
+            {{-- <div>
                 <h4>Más información</h4>
                 <hr>
             </div>
@@ -153,7 +153,7 @@
                             pariatur, similique quasi porro dolorum! Eius tempore minus unde minima ex numquam placeat.</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>

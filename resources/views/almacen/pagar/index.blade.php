@@ -85,12 +85,6 @@
                     </div>
             
                     <div class="mt-3 ">
-                        <span>Sala:</span>
-                        <br>
-                        <input type="text" class="w-100 form-control" id="id_sala" name="id_sala">
-                    </div>
-            
-                    <div class="mt-3 ">
                         <span>Hora:</span>
                         <br>
                         <input type="text" value="<?= $hora_inicio ?>" class="w-100 form-control " id="hora_inicio" name="hora_inicio" readonly>

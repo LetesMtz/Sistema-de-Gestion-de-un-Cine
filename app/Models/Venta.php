@@ -19,11 +19,10 @@ class Venta extends Model
         'id_cartelera',
         'id_sala',
         'id_estado',
-        'id_usuario',
         'nombre_cliente',
         'apellido_cliente',
         'email_cliente',
-        'fecha',
+        'dia',
         'hora',
         'total'
     ];

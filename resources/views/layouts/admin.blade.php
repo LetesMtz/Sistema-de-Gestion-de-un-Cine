@@ -46,7 +46,7 @@
 
         <div class="barra1">
             <ul>
-                <li id="nombreCine"><a href="#">CINE CONSTELACIÓN</a></li>
+                <li id="nombreCine"><a href="{{route('index')}}">CINE CONSTELACIÓN</a></li>
                 
                 <li id="iniciarSesion"><a href="#">Iniciar Sesion</a></li>
                 <li id="registrarse"><a href="#">Registrarse</a></li>
@@ -76,13 +76,13 @@
         </div>
         <div class="barra2">
             <ul>
-                <li><a href="">Preventas</a></li>
+                <li><a href="{{route('cartelera')}}">Preventas</a></li>
                 <li><a href="{{route('cartelera')}}">Cartelera</a></li>
                 <li><a href="{{route('index')}}" id="liInicio">
                     <img src="{!! asset('./img/logos/logo_fondo_negro.png') !!}" alt=""  id="imgInicio">
                 </a></li>
                 <li><a href="{{route('tienda')}}">Confitería</a></li>
-                <li><a href="#">Promociones</a></li>
+                <li><a href="{{route('tienda')}}">Promociones</a></li>
             </ul>
         </div>
     </nav>

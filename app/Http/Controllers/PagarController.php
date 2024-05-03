@@ -77,7 +77,7 @@ class PagarController extends Controller
         $venta->apellido_cliente = $request->apellido_cliente;
         $venta->email_cliente = $request->email;
         $venta->hora = $request->hora_inicio;
-        $venta->fecha = $request->dia;
+        $venta->dia = $request->dia;
         $venta->save();
 
         $ventaBuscar = Venta::orderBy('id_venta', 'desc')

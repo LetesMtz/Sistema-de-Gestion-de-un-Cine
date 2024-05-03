@@ -69,7 +69,7 @@
                                         </div>
 
                                         <div class="position-absolute" style="right: 22%;">
-                                            <a href="#" class="btn" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
+                                            <a href="<?= $peli[0][5] ?>" class="btn" target="blank" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                     </div>
 
                                     <div class="position-absolute" style="right: 22%;">
-                                        <a href="#" class="btn" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
+                                        <a href="<?= $peli[1][5] ?>" class="btn" target="blank" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                     </div>
 
                                     <div class="position-absolute" style="right: 22%;">
-                                        <a href="#" class="btn" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
+                                        <a href="<?= $peli[2][5] ?>" class="btn" target="blank" style="background-color: #E7B411; width: 150%; font-weight: bold;">Ver trailer</a>
                                     </div>
                                 </div>
                             </div>
