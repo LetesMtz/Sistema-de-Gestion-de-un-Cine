@@ -21,22 +21,7 @@
 
                     ?>
 
-                    <script>
-                        function precioAgua(){
-
-                            var buscar = document.querySelector("#aguasId").value;
-        
-                                @foreach ($productos as $item)
-                                    // document.querySelector("#precioAgua").value = '<?php
-                                    //     echo $item->nombre;?>';
-        
-                                    if (buscar == {!! $item->id_producto !!}) {
-                                        document.querySelector('#precioAgua').value = {!! $item->precio !!};                                        
-                                    }
-                                    
-                                @endforeach
-                        }
-                    </script>
+                    
 
                     <form action="{{ route('carritoCompras') }}" method="post">
                         {{ csrf_field() }}
@@ -44,7 +29,7 @@
                         <div class="w-100">
                             
 
-                            <label for="aguas">Tamaño:</label>
+                            <label for="aguasId">Tamaño:</label>
                             <select class="form-select" name="aguasId" id="aguasId" aria-label="Default select example" onchange="precioAgua()">
                                 <option selected>Seleccione...</option>
 
@@ -60,6 +45,15 @@
                                 
                                 
                             </select>
+
+                            <script>
+                                function precioAgua(){
+        
+                                    var buscar = document.querySelector("#aguasId").value;
+                
+                                    document.querySelector('#precioAgua').value = 23;
+                                }
+                            </script>
                         </div>
 
                         <div class="ms-1 w-25">
@@ -71,7 +65,7 @@
 
                     <div class="ms-1 w-25">
                         <label for="hola">Cantidad:</label>
-                        <input type="number" class="form-control mb-4" name="cantidadAguas" id="nameAgua" placeholder="1" min="1">
+                        <input type="number" class="form-control mb-4" name="cantidadAguas" id="nameAgua" placeholder="1">
                     </div>
 
                     <button type="submit" class="btn mb-3" style="background-color: #E7B411;">Añadir al carrito</button>
@@ -87,62 +81,66 @@
             <div class="card-body">
                 <h5 class="card-title">Vaso de Soda</h5>
                 
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
+                <form action="{{ route('carritoCompras') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="d-flex">
+                        <?php
+                            $carrito = [];
 
 
-                    ?>
+                        ?>
 
-                    <div class="w-75">
-                        <label for="aguas">Soda:</label>
-                        <select class="form-select" name="aguas" id="sodas" aria-label="Default select example" onchange="tamanioSoda()">
-                            <option selected>Seleccione...</option>
-                            @foreach ($productos as $item)
-                            <?php
-                                if ($item->id_tipo_producto == 3 && $item->identificador == 'Soda') {
-                                    echo '
-                                        <option value="'. $item->id_producto .'">'. $item->nombre .', ' . $item->tamanio .'</option>
-                                    ';
-                                }
-                            ?>
-                            @endforeach
-
-                        </select>
-
-                        <script>
-                            function tamanioSoda(){
-        
-                                var buscar = document.querySelector("#sodas").value;
-        
+                        <div class="w-75">
+                            <label for="sodas">Soda:</label>
+                            <select class="form-select" name="aguasId" id="sodas" aria-label="Default select example" onchange="tamanioSoda()">
+                                <option selected>Seleccione...</option>
                                 @foreach ($productos as $item)
-                                    // document.querySelector("#precioAgua").value = '<?php
-                                    //     echo $item->nombre;?>';
-        
-                                    if (buscar == {!! $item->id_producto !!}) {
-                                        document.querySelector('#precioSoda').value = {!! $item->precio !!};                                        
+                                <?php
+                                    if ($item->id_tipo_producto == 3 && $item->identificador == 'Soda') {
+                                        echo '
+                                            <option value="'. $item->id_producto .'">'. $item->nombre .', ' . $item->tamanio .'</option>
+                                        ';
                                     }
-                                    
+                                ?>
                                 @endforeach
-                            }
-                        </script>
+
+                            </select>
+
+                            <script>
+                                function tamanioSoda(){
+            
+                                    var buscar = document.querySelector("#sodas").value;
+            
+                                    @foreach ($productos as $item)
+                                        // document.querySelector("#precioAgua").value = '<?php
+                                        //     echo $item->nombre;?>';
+            
+                                        if (buscar == {!! $item->id_producto !!}) {
+                                            document.querySelector('#precioSoda').value = {!! $item->precio !!};                                        
+                                        }
+                                        
+                                    @endforeach
+                                }
+                            </script>
+                        </div>
+
+                        
+                        <div class="w-25 ms-1">
+                            <label for="hola">Precio:</label>
+                            <input type="text" class="form-control mb-4" id="precioSoda" placeholder="" readonly>
+                        </div> 
+                        
+                        
                     </div>
 
-                    
-                    <div class="w-25 ms-1">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="precioSoda" placeholder="" readonly>
-                    </div> 
-                    
-                    
-                </div>
+                    <div class="ms-1 w-25">
+                        <label for="hola">Cantidad:</label>
+                        <input type="number" class="form-control mb-4" name="cantidadAguas" id="nameAgua" placeholder="1" min="1">
+                    </div>
 
-                <div class="ms-1 w-25">
-                    <label for="hola">Cantidad:</label>
-                    <input type="number" class="form-control mb-4" id="nameAgua" placeholder="1" min="1">
-                </div>
+                    <button type="submit" class="btn mb-3" style="background-color: #E7B411;">Añadir al carrito</button>
 
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
+                </form>
             </div>
         </div>
 
@@ -156,161 +154,47 @@
     <h2>Golosinas</h2>
 
     <div class="d-flex"> 
-    
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/golosinas/varias_palomitas_acarameladas.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Palomitas de Maíz Acarameladas</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
+        
+        <?php
+            $i = 1;
 
+            foreach ($productos as $item) 
+            { 
+                if ($item->id_tipo_producto == 1 && $i < 5) {
+                    echo '
+                        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
+                            <form action="';?> {{ route('carritoCompras') }} <?php echo '" method="post">
+                                ';?> {{ csrf_field() }} <?php echo '
+                                <img src="'. $item->imagen .'" class="card-img-top bg-light" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">'. $item->nombre .'</h5>
+                                    
+                                    <div class="d-flex">
+                                        <input type="hidden" value="'. $item->id_producto .'" name="aguasId" id="aguasId">
 
-                    ?>
+                                        <div class="ms-1 w-100">
+                                            <label for="hola">Precio:</label>
+                                            <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" value="'. $item->precio .'" readonly>
+                                        </div>
+                                        
+                                    </div>
 
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
+                                    <div class="ms-1 w-100">
+                                        <label for="hola">Cantidad:</label>
+                                        <input type="text" class="form-control mb-4" id="cantidadAguas" name="cantidadAguas" placeholder="">
+                                    </div>
 
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
+                                    <button type="submit" class="btn mb-3" style="background-color: #E7B411;">Añadir al carrito</button>
+                                </div>
+                            </form>
+                        </div>
+                    ';
 
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/golosinas/m&m_chocolate.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Chocolate M&M</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
-
-
-                    ?>
-
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
-
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/golosinas/georgalos_chocolate_con_mani.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Chocolate con Maní Georgalos</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
-
-
-                    ?>
-
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
-
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/golosinas/pretzel.webp" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Pretzel</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
-
-
-                    ?>
-
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
-
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
+                    $i++;
+                }
+            }
+        ?>
     </div>
-
 </div>
 {{-- FIN DEL APARTADO GOLOSINAS --}}
 
@@ -320,157 +204,45 @@
 
     <div class="d-flex"> 
     
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/aperitivos/varias_palomitas_de_maiz.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Palomitas de Maíz</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
+        <?php
+            $i = 1;
 
+            foreach ($productos as $item) 
+            { 
+                if ($item->id_tipo_producto == 2 && $i < 5) {
+                    echo '
+                        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
+                            <form action="';?> {{ route('carritoCompras') }} <?php echo '" method="post">
+                                ';?> {{ csrf_field() }} <?php echo '
+                                <img src="'. $item->imagen .'" class="card-img-top bg-light" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">'. $item->nombre .'</h5>
+                                    
+                                    <div class="d-flex">
+                                        <input type="hidden" value="'. $item->id_producto .'" name="aguasId" id="aguasId">
 
-                    ?>
+                                        <div class="ms-1 w-100">
+                                            <label for="hola">Precio:</label>
+                                            <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" value="'. $item->precio .'" readonly>
+                                        </div>
+                                        
+                                    </div>
 
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
+                                    <div class="ms-1 w-100">
+                                        <label for="hola">Cantidad:</label>
+                                        <input type="text" class="form-control mb-4" id="cantidadAguas" name="cantidadAguas" placeholder="">
+                                    </div>
 
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
+                                    <button type="submit" class="btn mb-3" style="background-color: #E7B411;">Añadir al carrito</button>
+                                </div>
+                            </form>
+                        </div>
+                    ';
 
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/aperitivos/nachos.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Nachos</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
-
-
-                    ?>
-
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
-
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/aperitivos/hot_dog.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Hot Dogs</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
-
-
-                    ?>
-
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
-
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
-
-        <div class="card me-5" style="width: 25rem; background-color: #E8E8E8;">
-            <img src="./img/aperitivos/pizza.png" class="card-img-top bg-light" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Porción de Pizza</h5>
-                
-                <div class="d-flex">
-                    <?php
-                        $carrito = [];
-
-
-                    ?>
-
-                    <div class="w-100">
-                        <label for="aguas">Choose a car:</label>
-                        @foreach ($productos as $item)
-                        <?php
-                            
-                        ?>
-                        @endforeach
-                        <select class="form-select" name="aguas" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="ms-1 w-25">
-                        <label for="hola">Precio:</label>
-                        <input type="text" class="form-control mb-4" id="nameAgua" placeholder="" readonly>
-                    </div>
-                    
-                </div>
-
-                <a href="{{ route('tienda') }}" class="btn" style="background-color: #E7B411;">Añadir al carrito</a>
-            </div>
-        </div>
+                    $i++;
+                }
+            }
+        ?>
 
     </div>
 

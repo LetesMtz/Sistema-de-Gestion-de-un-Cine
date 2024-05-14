@@ -27,14 +27,27 @@ class TiendaController extends Controller
         $precioProd = Producto::all()
         ->where('id_producto', $request->aguasId);
 
-        //Crea un objeto donde se guardará
-        $detalle = new DetalleVenta_Temp();
-        $detalle->id_producto = $request->aguasId;
-        $detalle->id_venta = 0;
-        $detalle->cantidad = $request->cantidadAguas;
-        $detalle->tamanio = $precioProd->first()->tamanio;
-        $detalle->total = ($precioProd->first()->precio * $detalle->cantidad);
-        $detalle->save();
+        if($request->tamanio != null)
+        {
+            //Crea un objeto donde se guardará
+            $detalle = new DetalleVenta_Temp();
+            $detalle->id_producto = $request->aguasId;
+            $detalle->id_venta = 0;
+            $detalle->cantidad = $request->cantidadAguas;
+            $detalle->tamanio = $precioProd->first()->tamanio;
+            $detalle->total = ($precioProd->first()->precio * $detalle->cantidad);
+            $detalle->save();
+        }
+        else
+        {
+            $detalle = new DetalleVenta_Temp();
+            $detalle->id_producto = $request->aguasId;
+            $detalle->id_venta = 0;
+            $detalle->cantidad = $request->cantidadAguas;
+            $detalle->tamanio = 'Null';
+            $detalle->total = ($precioProd->first()->precio * $detalle->cantidad);
+            $detalle->save();
+        }
 
         return redirect()->action([TiendaController::class, 'index']);
     }
